@@ -1,1 +1,5 @@
-{"componentChunkName":"component---src-pages-arts-index-tsx","path":"/arts/","result":{"data":{"ogimage":{"publicURL":"/static/6c7b1982cf5f06ec81743b83533d2f39/main-ogimage.jpg"}},"pageContext":{}},"staticQueryHashes":["2437061654","420574660","798437112"]}
+{
+    "componentChunkName": "component---src-pages-arts-index-tsx",
+    "path": "/arts/",
+    "result": {"data":{"ogimage":{"publicURL":"/static/6c7b1982cf5f06ec81743b83533d2f39/main-ogimage.jpg"}},"pageContext":{}},
+    "staticQueryHashes": ["2437061654","420574660","798437112"]}
