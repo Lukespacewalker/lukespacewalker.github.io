@@ -1,0 +1,64 @@
+import { GatsbyImage } from "gatsby-plugin-image";
+
+export const frontmatter = {
+  type: "program",
+  tag: "healthtag-nfc-scanner",
+  date: "2022-07-23 10:09",
+  title: "HealthTAG NFC Scanner",
+  authors: ["myself"],
+  excerpt: "โปรแกรมที่ใช้เชื่อมต่อกับ NFC Reader ของ Silicon craft ที่ HealhTAG ใช้งาน",
+  background: "new-3.png",
+  images: [
+    "old.png",
+    "new-1.png",
+    "new-2.png",
+    "new-3.png"
+  ],
+};
+
+โปรแกรมที่ใช้เชื่อมต่อกับ NFC Reader ของ Silicon craft ADR12 ที่ HealhTAG ใช้งาน โดยเครื่องอ่านจะเชื่อมต่อผ่านทาง COM port
+
+## ฟีเจอร์
+
+- สามารถใช้งานได้บนระบบปฏิบัติการย้อนหลังไปถึง Windows 7 SP1 (แต่ต้องติดตั้ง Update ตาม [How to Update Windows 7 All at Once with Microsoft’s Convenience Rollup](https://www.howtogeek.com/255435/how-to-update-windows-7-all-at-once-with-microsofts-convenience-rollup/))
+- ส่วนติดต่อผู้ใช้ง
+
+## ขั้นตอนการใช้งาน
+
+1. เสียบสาย USB Type-C กับเครื่องอ่านและเสียบสาย USB Type-A กับคอมพิวเตอร์ จะได้ยินเสียง Beep และไม่จำเป็นต้องติดตั้ง Driver ใดๆ เพิ่มเติม
+2. เปิดโปรแกรมการนั้นเลือก NFC Reader ที่ต้องการเชื่อมต่อ
+
+<GatsbyImage
+  image={props.images[1].childImageSharp.gatsbyImageData}
+  style={{ height: `500px` }}
+  alt="poster"
+/>
+
+3. แตะ NFC Tag บน NFC Reader เพื่ออ่านข้อมูลที่บันทึกอยู่ ผู้ใช้งานยังสามารถเลือกได้ว่าต้องการให้เปิดบราว์เซอร์อัตโนมัติหรือไม่ และต้องการใช้บราว์เซอร์ใดในการเปิด
+
+<GatsbyImage
+  image={props.images[3].childImageSharp.gatsbyImageData}
+  style={{ height: `500px` }}
+  alt="poster"
+/>
+
+4. ผู้ใช้งานสามารถตั้งค่าต่างๆ เช่น ภาษา กรองรายชื่ออุปกรณ์ที่ไม่ต้องการ หรือที่อยู่ของบราวเซอร์ที่ติดตั้งในเครื่อง
+
+<GatsbyImage
+  image={props.images[2].childImageSharp.gatsbyImageData}
+  style={{ height: `500px` }}
+  alt="poster"
+/>
+
+## ดาวน์โหลด
+
+สามารถดาวน์โหลดโปรแกรม (ต้องใช้งานร่วมกับ Silicon craft ADR12) ได้ที่ [healthtag.io/support/download](https://healthtag.io/support/download) หรือ Download ได้จากที่นี้
+
+- [HealthTAG NFCScanner 1.1.0 win-x64](https://healthtag-software.s3.ap-southeast-1.amazonaws.com/nfc-scanner/HealthTAG-NFCScaner-x64-1.1.0.zip)
+- [HealthTAG NFCScanner 1.1.0 win-x86](https://healthtag-software.s3.ap-southeast-1.amazonaws.com/nfc-scanner/HealthTAG-NFCScaner-x86-1.1.0.zip)
+
+## เบื้องหลังการพัฒนา
+
+เป็นการปรับปรุงโปรแกรมเดิมให้มีความสวยงามและใช้งานง่ายมากขึ้น
+
+โดยพัฒนาโดยใช้ Microsoft Visual Studio 2022 Preview โดยใช้ภาษา C# และใช้ UI Framework คือ WPF (Windows Presentation Foundation) เนื่องจากต้องการให้มันสามารถใช้งานได้ใน Windows 7 SP1 โดยใช้ Lib ชื่อ [WPF-UI ](https://github.com/lepoco/wpfui) และ [ReactiveUI](https://www.reactiveui.net/)

@@ -3,7 +3,6 @@ import { graphql } from "gatsby";
 import { FullWidthImageLayout } from "@layouts/full-w-image-layout";
 import { SEO } from "@components/seo";
 import { renderVerticalContentList } from "@utilities/";
-import { GatsbyImage, getImage } from "gatsby-plugin-image";
 
 export default class Index extends React.Component<{ data: any }, {}> {
   constructor(props) {
@@ -15,15 +14,15 @@ export default class Index extends React.Component<{ data: any }, {}> {
       data: {
         articles,
         file: {
-          publicURL
+          publicURL,
+          childImageSharp: { gatsbyImageData: image },
         },
       },
     } = this.props;
     return (
-      <FullWidthImageLayout 
-      header={<><h1 className="text-center lg:text-5xl">Softwares</h1><div  className="text-center text-sm">โปรแกรมที่สามารถดาวน์โหลดไปลองใช้งานได้</div></>} 
-      backgroundElement={<div className="w-full h-96" style={{background:`linear-gradient(to right, #9796f0bb, #fbc7d4bb)`}}></div>}>
-        <SEO title="Softwares" imageUrl={publicURL} />
+      <FullWidthImageLayout header={<><h1 className="text-center lg:text-5xl">Web {"&"} Web applciations</h1><div  className="text-center text-sm">การพัฒนาเว็บไซต์และเว็บแอพพลิเคชั่นที่ผมเป็นผู้ทำ</div></>} 
+      backgroundElement={<div className="w-full h-96" style={{background:`linear-gradient(to right, #EECDA3bb, #EF629Fbb)`}}></div>}>
+        <SEO title="Projects" imageUrl={publicURL} />
         {renderVerticalContentList(articles.nodes)}
       </FullWidthImageLayout>
     );
@@ -34,11 +33,11 @@ export const pageQuery = graphql`
   {
     articles: allMdx(
       sort: { fields: frontmatter___date, order: DESC }
-      filter: { frontmatter: { type: { eq: "program" } } }
+      filter: { frontmatter: { type: { eq: "project" } } }
     ) {
       ...ArticlesFragment
     }
-    file(relativePath: { eq: "splash/program.jpg" }) {
+    file(relativePath: { eq: "splash/projekt.jpg" }) {
       publicURL
       childImageSharp {
         gatsbyImageData(quality: 90, layout: FULL_WIDTH)

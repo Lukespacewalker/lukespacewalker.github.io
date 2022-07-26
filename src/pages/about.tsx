@@ -14,8 +14,11 @@ export default (props) => {
                     <div>แพทย์ศาสตร์บัณฑิต จุฬาลงกรณ์มหาวิทยาลัย 66</div>
                     <div>ปริญญาโท สาขาการวิจัยและการจัดการด้านสุขภาพ ภาควิชาเวชศาสตร์ป้องกันและสังคม คณะแพทย์ศาสตร์ จุฬาลงกรณ์มหาวิทยาลัย</div>
                     <div>แพทย์เฉพาะทางสาขาเวชศาสตร์ป้องกันแขนง อาชีวเวชศาสตร์</div>
+                    <h4>การทำงาน</h4>
+                    <div>แพทย์เวชศาสตร์ป้องกันแขนงอาชีวเวชศาสตร์ <a href="https://ratchaburi-om.netlify.app">โรงพยาบาลราชบุรี</a></div>
+                    <div>Tech coordinator at <a href="https://healthtag.io">HealthTAG</a></div>
                     <h4>ความสนใจ</h4>
-                    <div>อยากเข้าร่วมทำงานด้าน Health Tech</div>
+                    <div>Health Informataion Technology</div>
                 </div>
                 <div className={introImage}>
                     <svg className={`absolute ${introSvg}`} id="visual" viewBox="0 0 900 900" xmlns="http://www.w3.org/2000/svg" version="1.1">

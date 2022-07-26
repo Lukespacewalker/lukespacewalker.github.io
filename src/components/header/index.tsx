@@ -20,7 +20,7 @@ const menus: Array<Menu> = [
     title: `Web applications`,
     menus: [
       {
-        title: "Occupational medicine checkup system",
+        title: "OM Checkup",
         link: "https://checkup.doctortons.com"
       }, {
         title: "ATK system",
@@ -32,11 +32,11 @@ const menus: Array<Menu> = [
     title: `Works`,
     menus: [
       {
-        title: "Projects",
-        link: "/projects"
+        title: "Web applications",
+        link: "/web-applications"
       }, {
-        title: "Software",
-        link: "/programs"
+        title: "Windows® applications",
+        link: "/windows-application"
       }
     ]
   },

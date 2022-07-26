@@ -1,0 +1,14 @@
+import { GatsbyImage } from "gatsby-plugin-image";
+export const frontmatter = {
+  type: "blog",
+  tag: "thai-transcribe-1",
+  date: "2022-06-06 17:24",
+  title: "การเปลี่ยนเสี่ยงภาษาไทยเป็นข้อความ (ตอนที่ 1)",
+  authors: ["myself"],
+  excerpt:
+    "วิธีการการเปลี่ยนเสี่ยงภาษาไทยจากไฟล์เสี่ยงที่อัดไว้แล้วเป็นข้อความ โดยฟีเจอร์ของ Windows 11 หรือ Office 365",
+  background: "bg.jpg",
+  images: [
+    "app_6.jpg",
+  ],
+};

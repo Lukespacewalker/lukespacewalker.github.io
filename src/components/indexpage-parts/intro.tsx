@@ -67,7 +67,7 @@ export const Intro: React.FunctionComponent = (props) => {
               stroke="url(#gradient2)" stroke-width="8"></path></g>
         </svg>
         <StaticImage
-          src="../../images/author2.jpg"
+          src="../../images/me.jpg"
           className="m-6 rounded-md sm:rounded-xl shadow-xl w-96 h-96 sm:w-[36rem] sm:h-[36rem]"
           alt="author"
           imgStyle={{ objectPosition: `center center` }}
