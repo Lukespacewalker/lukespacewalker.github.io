@@ -4,9 +4,9 @@ export const frontmatter = {
   type: "program",
   tag: "inbody-pdf-extractor",
   date: "2022-07-23 10:09",
-  title: "Inbody 230 PDF Extractpr",
+  title: "Inbody 230 PDF Extractor",
   authors: ["myself"],
-  excerpt: "โปรแกรมที่จะช่วยเปลี่ยน Theme ของ Windows 10 ไปตาม Night Light",
+  excerpt: "โปรแกรมช่วยดึงข้อมูลจาก PDF ที่ได้จากเครื่อง Body Compistion รุ่น InBody 203",
   background: "3.png",
   images: [
     "1.png",
@@ -15,3 +15,57 @@ export const frontmatter = {
     "4.png"
   ],
 };
+
+โปรแกรมช่วยดึงข้อมูลจาก PDF ที่ได้จากเครื่อง Body Compistion รุ่น InBody 230
+
+## ฟีเจอร์
+
+- สามารถใช้งานได้บนระบบปฏิบัติการย้อนหลังไปถึง Windows 7 SP1 (แต่ต้องติดตั้ง Update ตาม [How to Update Windows 7 All at Once with Microsoft’s Convenience Rollup](https://www.howtogeek.com/255435/how-to-update-windows-7-all-at-once-with-microsofts-convenience-rollup/))
+
+## การใช้งาน
+
+### วิดีโอสาธิตการใช้งาน
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/MZyYe3mMW4U" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+### ขั้นตอนการใช้งาน
+
+1. ทำการ Print ผลการตรวจจากโปรแกรมของ InBody 230 เป็น PDF โดยใช้ PDF Printer เช่น Microsoft Print To PDF, Adobe PDF Printer, novaPDF, doPDF เป็นต้น ใส่โฟล์เดอร์ไว้ โดยสามารถตั้งชื่อไฟล์อย่างไรก็ได้เพียงแต่ต้องไม่ซ้ำกัน (ถ้าซ้ำกันมันก็บันทึกทับไฟล์เดิม 😖)
+2. เปิดโปรแกรมจากนั้นเลือกโฟล์เดอร์ที่เก็บไฟล์ PDF เหล่านี้ไว้ 
+
+<GatsbyImage
+  image={props.images[1].childImageSharp.gatsbyImageData}
+  style={{ height: `600px` }}
+  alt="poster"
+/>
+
+3. กดดึงข้อมูลจาก PDF โปรแกรมจะทำการดึงข้อมูลจากทุกไฟล์ โดยสามารถดูเปรียบเตรียมข้อมูลที่ดึงออกมากับไฟล์ต้นฉบับได้ โดยสามารถแก้ไขข้อมูลที่ดึงออกมาได้ด้วย
+
+<GatsbyImage
+  image={props.images[2].childImageSharp.gatsbyImageData}
+  style={{ height: `600px` }}
+  alt="poster"
+/>
+
+4. ไฟล์ Excel ที่ส่งออกมาจะมีข้อมูลที่นำออกมาจากไฟล์ PDF สามารถนำไปวิเคราะห์อื่นๆ ต่อได้
+
+<GatsbyImage
+  image={props.images[3].childImageSharp.gatsbyImageData}
+  style={{ height: `600px` }}
+  alt="poster"
+/>
+
+## ดาวน์โหลด
+
+สามารถดาวน์โหลดโปรแกรมได้จาก OneDrive ของผม
+
+- [HealthTAG NFCScanner 1.1.0 win-x64](https://1drv.ms/u/s!AnqXyzBKVJbomrAtXrnZhobYEyeCQg?e=D5kerI)
+- [HealthTAG NFCScanner 1.1.0 win-x86](https://1drv.ms/u/s!AnqXyzBKVJbomrAuFx1oJJxUJ0J_WQ?e=lhLhQy)
+
+## เบื้องหลังการพัฒนา
+
+พัฒนาโดยใช้ Microsoft Visual Studio 2022 Preview โดยใช้ภาษา C# และใช้ UI Framework คือ WPF (Windows Presentation Foundation) เนื่องจากต้องการให้มันสามารถใช้งานได้ใน Windows 7 SP1 โดยใช้ Lib ชื่อ [WPF-UI ](https://github.com/lepoco/wpfui) และ [ReactiveUI](https://www.reactiveui.net/)
+
+### Source Code
+
+สามารถดูได้ที่ GitHub ของผม [InBodyPDFExtractor](https://github.com/Lukespacewalker/InBodyPDFExtractor)

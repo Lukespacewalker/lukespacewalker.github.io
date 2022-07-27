@@ -16,7 +16,7 @@ export default (props) => {
                     <div>แพทย์เฉพาะทางสาขาเวชศาสตร์ป้องกันแขนง อาชีวเวชศาสตร์</div>
                     <h4>การทำงาน</h4>
                     <div>แพทย์เวชศาสตร์ป้องกันแขนงอาชีวเวชศาสตร์ <a href="https://ratchaburi-om.netlify.app">โรงพยาบาลราชบุรี</a></div>
-                    <div>Tech coordinator at <a href="https://healthtag.io">HealthTAG</a></div>
+                    <div>Tech coordinator (medical advisor and software developer) at <a href="https://healthtag.io">HealthTAG</a></div>
                     <h4>ความสนใจ</h4>
                     <div>Health Informataion Technology</div>
                 </div>
