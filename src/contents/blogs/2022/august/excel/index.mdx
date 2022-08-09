@@ -1,0 +1,49 @@
+import { MDXImage } from "@components/mdx-image";
+
+export const frontmatter = {
+  type: "blog",
+  tag: "excel",
+  date: "2022-08-09 18:09",
+  title: "สอนการใช้งาน Excel",
+  authors: ["myself"],
+  excerpt: "สอนการใช้งาน Excel",
+  background: "bg.png",
+  images: [
+    "relative-ref-1.png",
+    "relative-ref-2.png",
+    "absolute-ref-1.png",
+    "absolute-ref-2.png",
+  ],
+};
+
+# การใช้งาน Excel 365
+
+# Relative vs Absolute reference
+
+การใช้งาน Formula ใน Excel นั้นจะมีการอ้างถึง Cell เช่น `=A1+B2` ซึ่งการอ้างแบบนี้คือการอ้างแบบ Relative โดยเวลาเรา Drag Cell เช่น Cell C2 ลงมาถึง C7 จะเห็นว่า Formula จะเปลี่ยนไปเรื่อยเป็น `=A7+B7` เวลาเราอ้างอิงถึง Cell จะมีการอ้างทั้งแบบ Relative reference ดังรูป โดยเวลาเรา Drag cell นั้น Cell ที่อ้างถึงจะเลื่อนตามไปด้วย
+
+<MDXImage imageList={props.images} name="relative-ref-1.png" />
+<MDXImage imageList={props.images} name="relative-ref-2.png" />
+
+ในขณะที่เป็น Absolute reference นั้น เวลาเรา Drag cell
+
+<MDXImage imageList={props.images} name="absolute-ref-1.png" />
+<MDXImage imageList={props.images} name="absolute-ref-2.png" />
+
+# การ Clean ข้อมูลโดยใช้ Excel
+
+## การกำจัด Whitespace ส่วนเกิน
+
+### การ Trim ช่องว่างที่หัวท้ายของ String + การปรับ Spacebar ให้เหลือแค่ 1 ตัว
+
+ใช้ Function `TRIM()` ในการกำจัด Whitespace ที่หัวท้ายของ Cell
+
+### การกำจัด Whitespace ที่อยู่ระหว่างข้อความ
+
+# จัดการข้อมูลด้วย Table
+
+# Desctipive analysis โดยใช้ PivotTable
+
+# เชื่อมข้อมูลด้วย XLOOKUP
+
+# Pivot Table

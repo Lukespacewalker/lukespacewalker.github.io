@@ -1,0 +1,49 @@
+import { MDXImage } from "@components/mdx-image";
+
+export const frontmatter = {
+  type: "project",
+  tag: "healthtag-io",
+  date: "2022-08-09 09:09",
+  title: "เว็บไซต์ healthtag.io",
+  authors: ["myself"],
+  excerpt: "่เว็บไซต์ของบริษัท Medicense Intelligence ซึ่งพัฒนาโดยผม",
+  background: "bg.png",
+  images: ["support.png", "support-2.png", "registration.png"],
+};
+
+## สถานะปัจจุบัน
+
+สามารถเข้าดูได้ที่ [healthtag.io](https://www.healthtag.io)
+
+# Technology stack ที่ใช้
+
+## Front End
+
+- Next.JS
+
+## Back End
+
+- Website: Strapi Headless CMS + PostgreSQL
+- Registration system: AWS Lambda + AWS DynamoDB + Microsoft Graph
+
+# ที่มา
+
+เป็นการปรับปรุงหน้าเว็บไซต์เดิมให้มันมีความทันสมัยและสวยงามมากขึ้น โดยผมเป็นผู้พัฒนาส่วน Frontend โดยใช้ Next.JS เอง และใช้ Strapi ในการจัดการข้อมูลบางส่วนที่นำมาแสดง โดยตัวเว็บไซต์นั้นจะผสมกันระหว่าง Static content และ Dynamic content แต่ส่วนที่เป็น Dynamic นั้น Next.JS จะ Generate static page จากข้อมูลจาก Strapi โดยอัตโนมัติ
+
+<MDXImage imageList={props.images} name="support.png" caption="หน้า Support" />
+
+และผมเขียนบทความบางส่วนในส่วนของ News และส่วน Support
+
+<MDXImage
+  imageList={props.images}
+  name="support-2.png"
+  caption="บทความหน้า Support"
+/>
+
+ส่วนระบบการสมัครกิจกรรมนั้นผมพัฒนาโดยใช้ AWS Lambda + AWS DynamoDB และใช้ Microsoft Graph เพื่อใช้ส่งอีเมลล์จากบริษัท
+
+<MDXImage
+  imageList={props.images}
+  name="registration.png"
+  caption="หน้า Registration สำหรับ Event"
+/>
