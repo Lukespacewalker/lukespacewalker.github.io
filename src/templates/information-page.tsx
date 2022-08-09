@@ -113,7 +113,7 @@ class InformationPage extends React.Component<{ data: any }, {}> {
 
     const authors: Array<IAuthor> = a;
     const tocs = items as Array<TOCItem>;
-
+    console.log(images);
     let asideContent = <div></div>;
     if (authors != null || tocs != null) {
       asideContent = (
@@ -128,7 +128,9 @@ class InformationPage extends React.Component<{ data: any }, {}> {
       <ArticleLayout
         title={title}
         tagLine={date}
-        GatsyImageElement={<GatsbyImage image={getImage(background)} alt={title}/>}
+        GatsyImageElement={
+          <GatsbyImage image={getImage(background)} alt={title} />
+        }
         aside={asideContent}
       >
         {excerpt != null ? (
