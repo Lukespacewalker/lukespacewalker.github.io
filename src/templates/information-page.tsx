@@ -11,6 +11,7 @@ import { ArticleLayout } from "@layouts/article-layout";
 import { H1, H2, H3, H4, DetailTocItem, IAuthor, TOCItem } from "./template";
 
 import "./information-page-style.scss";
+
 class InformationPage extends React.Component<{ data: any }, {}> {
   constructor(props) {
     super(props);
@@ -113,7 +114,6 @@ class InformationPage extends React.Component<{ data: any }, {}> {
 
     const authors: Array<IAuthor> = a;
     const tocs = items as Array<TOCItem>;
-    console.log(images);
     let asideContent = <div></div>;
     if (authors != null || tocs != null) {
       asideContent = (
@@ -155,7 +155,9 @@ class InformationPage extends React.Component<{ data: any }, {}> {
               pre: Pre,
             }}
           >
-            <MDXRenderer images={images}>{body}</MDXRenderer>
+            <MDXRenderer images={images}>
+                {body}
+            </MDXRenderer>
           </MDXProvider>
         </div>
       </ArticleLayout>

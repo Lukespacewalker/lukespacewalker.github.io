@@ -1,4 +1,5 @@
 import { MDXImage } from "@components/mdx-image";
+import { MDXContext } from "@components/mdx-context";
 
 export const frontmatter = {
   type: "blog",
@@ -9,35 +10,134 @@ export const frontmatter = {
   excerpt: "สอนการใช้งาน Excel",
   background: "bg.png",
   images: [
+    "basic-format-cell-dimension.png",
     "relative-ref-1.png",
     "relative-ref-2.png",
     "absolute-ref-1.png",
     "absolute-ref-2.png",
+    "table-resize-1.png",
+    "table-resize-2.png",
+    "table-resize-2.1.png",
+    "table-resize-3.png",
+    "formula-table-1.png",
+    "formula-table-2.png",
+    "formula-line-break.png",
+    "formula-line-break-2.png",
+    "formula-watch-windows-1.png",
+    "formula-watch-windows-2.png",
+    "formula-watch-windows-3.png",
   ],
 };
 
-# การใช้งาน Excel 365
+<MDXContext.Provider value={{imagesList:props.images}}>
+
+** วิธีการใช้งานและรูปภาพทั้งหมดมาจาก Microsoft Excel ที่เป็นส่วนหนึ่งของ Microsoft Office 365 หากคุณใช้ Excel รุ่นเก่ากว่านี้ หรือไม่ใช่รุ่น 365 อาจมีหน้าจอโปรแกรมที่แตกต่าง และอาจไม่มีบางฟังก์ชัน **
+
+# คำศัพท์
+
+Range หมายถึงการระบุ Cell ที่อาจจะมี 1 หรือหลาย Cell ก็ได้ โดยใช้ A1 Notation เช่น A1:C3 
+
+# พื้นฐาน
+
+## Relative vs Absolute reference
+
+การใช้งาน Formula ใน Excel นั้นจะมีการอ้างถึง Cell เช่น `=A1+B2` ซึ่งการอ้างแบบนี้คือการอ้างแบบ Relative โดยเวลาเรา Drag Cell เช่น Cell C2 ลงมาถึง C7 จะเห็นว่า Formula จะเปลี่ยนไปเรื่อยเป็น `=A7+B7` เวลาเราอ้างอิงถึง Cell จะมีการอ้างทั้งแบบ Relative reference ดังรูป โดยเวลาเรา Drag cell นั้น Cell ที่อ้างถึงจะเลื่อนตามไปด้วย
+
+<MDXImage name="relative-ref-1.png" />
+<MDXImage name="relative-ref-2.png" />
+
+ในขณะที่เป็น Absolute reference นั้น เวลาเรา Drag cell ที่ Formula
+
+<MDXImage name="absolute-ref-1.png" />
+<MDXImage name="absolute-ref-2.png" />
+
+## การจัดความกว้างของ Cell
+
+สามารถจัด Dimension ของ Row และ Column แบบอัติโนมัติได้
+
+<MDXImage name="basic-format-cell-dimension.png" />
+
+# Table
+
+การกำหนด Range ให้กลายเป็น Table นั้นมีประโญชน์คือทำให้การกระทำใดๆ ก็ตามที่มองข้อมูลเป็น Row เหมือนเป็นฐานข้อมูลนั้นทำได้ง่ายขึ้น (ลองนึกถึง DataFrame ใน Pandas หรือ SPSS หรือ Stata หรือ Relational Database )
+
+## การกำหนด Cell ทีต้องการให้เป็น Table และการเปลี่ยน Table กับไปเป็น Cell ปกติ
+
+Drag cells ที่ต้องการทำให้เป็น Table จากนั้นกด Format as a table จากนั้นตรวจสอบ Range อีกครั้งและดูว่า Cells มี Header หรือไม่ โดยข้อความใน Header นี้ต้องไม่ซ้ำกัน จากนั้นกด Ok
+
+## การปรับเปลี่ยนขนาด Table 
+
+สามารถทำได้โดยคลิกที่ Cell ในก็ได้ใน Table แล้วเลือก Table tab จาก Ribbon จากนั้นกด Resize table
+
+<MDXImage name="table-resize-1.png" caption="ปุ่ม Resize ที่อยู่ตรง Table tab" />
+<MDXImage name="table-resize-2.png" caption="ระบุ Range (โดยการพิมพ์หรือ Drag) ของ Table ใหม่ที่ต้องการ โดยต้อง Overlap กับส่วนเดิม"/>
+
+หรือ Drag ที่บริเวณมุมขวาล่างของ Table เพื่อปรับขนาด
+
+<MDXImage name="table-resize-2.1.png" caption="Drag บริเวณเครื่องหมายบวกตรงมุมขวาล่างของ Table"/>
+
+ก็ได้จะ Table ขนาดใหม่ตามที่ต้องการ
+
+<MDXImage name="table-resize-3.png" caption="Table ขนาดใหม่"/>
+
+## Formula ใน Table 
+เมื่อ Format cells เป็น Table แล้ว การใช้งาน Formula ใน Table จะง่ายขึ้นสำหรับ Formula ที่อ้างอิง Cell อื่นๆ ที่อยู่ใน Row เดียวกัน
+
+โดยแทนที่จะเป็น A1 Notation จะการเป็น [@[Header1]:@[Header2]] แทน ซึ่งจะหมายถึงการอ้างอิงถึงค่าใน Cell ที่มี Header 
+
+<MDXImage name="formula-table-1.png" caption="Formula ใน Table จะเปลี่ยนแปลงรูปแบบไป"/>
+
+เมื่อเราใส่ Formula ในบรรทัดแรกแล้ว เราสามารถจะ Fill in cell ที่เหลือใน Column นั้นได้โดยตรง โดยการ Drag ลงมาหรือกดจาก Auto correct ก็ได้ 
+
+<MDXImage name="formula-table-2.png" caption="Formula ที่ Fill in เรียบร้อย"/>
+
+จะเห็นว่า Formula ของทุก Cell นั้นเหมือนกัน เพราะมันอ้างถึง Cell ที่ยังอยู่ใน Row เดียวกัน แค่ต่าง Column กันเท่านั้น
 
 # Formula
 
 ## การเว้นบรรทัดในช่อง Formula
+เมื่อต้องพิมพ์ Formula ที่ยาวหรือซับซ้อน เช่น การใช้ `IF()` ซ้อนกันหลายครั้ง
+
+<MDXImage name="formula-line-break.png" />
 กด ALT+ENTER เพื่อเว้นบรรทัด จะช่วยให้ Formula อ่านได้ง่ายมากขึ้น
+<MDXImage name="formula-line-break-2.png" />
+
+## Formula watch window
+ใช้้สำหรับการ Watch ค่าใน Cell ที่เราสนใจว่ามีค่าเปลี่ยนแปลงไปอย่างไร ซึ่งมีประโยขน์ถ้าเราจำเป็นต้องดูค่าจาก Cell หลายจุด หลาย Sheet พร้อมกัน
+
+ใน Formula tab เลือก Watch window จะแสดงหน้าต่าง Watch window ขึ้นมา จากนั้นให้กด Add watch แล้วเลือก Cell ที่ต้องการ Watch สำหรับการยกเลิกการ Monitor ให้กด Delete watch
+
+<MDXImage name="formula-watch-windows-1.png" caption="การเพิ่ม Cell ที่ต้องการ Watch"/>
+<MDXImage name="formula-watch-windows-2.png" caption="หน้าจอ Watch window" />
+
+จากนั้นพอเราลองเปลี่ยนข้อมูลดู จะเห็นว่า Cell ซึ่งคำนวนค่าเฉลี่ย BMI ของทุกคน จะมีค่าเปลี่ยนแปลงไปด้วย ทำให้เราไม่ต้องคอยเลื่อนหน้าจอ Sheet ไปดู Cell นั้นๆ เอง
+
+<MDXImage name="formula-watch-windows-3.png" caption="หน้าจอ Watch window ที่แสดงค่าใน Cell ที่เปลี่ยนแปลงไป"/>
+
+## การตรวจการทำงานของ Formula
+
+Traceback
+
+Tracforward
+
+Evaluation
 
 ## Formula ที่น่าสนใจ
 
 ### CONVERT แปลงหน่วย
+แปลงหน่
 
-# Relative vs Absolute reference
+### FILTER กรองข้อมูล
+ตอนนี้คุณสามารถกรองห้องโดยใช้ FILTER()
 
-การใช้งาน Formula ใน Excel นั้นจะมีการอ้างถึง Cell เช่น `=A1+B2` ซึ่งการอ้างแบบนี้คือการอ้างแบบ Relative โดยเวลาเรา Drag Cell เช่น Cell C2 ลงมาถึง C7 จะเห็นว่า Formula จะเปลี่ยนไปเรื่อยเป็น `=A7+B7` เวลาเราอ้างอิงถึง Cell จะมีการอ้างทั้งแบบ Relative reference ดังรูป โดยเวลาเรา Drag cell นั้น Cell ที่อ้างถึงจะเลื่อนตามไปด้วย
+---
 
-<MDXImage imageList={props.images} name="relative-ref-1.png" />
-<MDXImage imageList={props.images} name="relative-ref-2.png" />
+# Pivot Table
 
-ในขณะที่เป็น Absolute reference นั้น เวลาเรา Drag cell
+## การเปลี่ยนโหมดการแสดงผล Pivot table
 
-<MDXImage imageList={props.images} name="absolute-ref-1.png" />
-<MDXImage imageList={props.images} name="absolute-ref-2.png" />
+
+---
 
 # การ Clean ข้อมูลโดยใช้ Excel
 
@@ -56,3 +156,5 @@ export const frontmatter = {
 # เชื่อมข้อมูลด้วย XLOOKUP
 
 # Pivot Table
+
+</MDXContext.Provider>

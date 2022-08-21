@@ -1,5 +1,6 @@
 import * as React from "react";
 import { GatsbyImage } from "gatsby-plugin-image";
+import { MDXContext } from "./mdx-context";
 export const MDXImage = ({
   imageList,
   mode = "block",
@@ -17,6 +18,7 @@ export const MDXImage = ({
   alt: string;
   [x: string]: any;
 }) => {
+  imageList = imageList ?? React.useContext(MDXContext).imagesList
   const image = imageList.find(
     (image) => image.name === name.substring(0, name.lastIndexOf("."))
   );
