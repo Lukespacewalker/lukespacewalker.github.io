@@ -1,7 +1,6 @@
 import * as React from "react";
 import { graphql } from "gatsby";
 import { SEO } from "@components/seo";
-import { MDXRenderer } from "gatsby-plugin-mdx";
 import { MDXProvider } from "@mdx-js/react";
 import { GatsbyImage, getImage } from "gatsby-plugin-image";
 import { Pre } from "@components/code";
@@ -11,8 +10,12 @@ import { ArticleLayout } from "@layouts/article-layout";
 import { H1, H2, H3, H4, DetailTocItem, IAuthor, TOCItem } from "./template";
 
 import "./information-page-style.scss";
+import { MDXContext } from "@components/mdx-context";
 
-class InformationPage extends React.Component<{ data: any }, {}> {
+class InformationPage extends React.Component<
+  { data: any; children: any },
+  {}
+> {
   constructor(props) {
     super(props);
     if (typeof window !== "undefined") {
@@ -22,7 +25,7 @@ class InformationPage extends React.Component<{ data: any }, {}> {
       window.location.hash = "";
     }
   }
-  private useTOC = false;
+  private useTOC = true;
 
   private target: string;
 
@@ -94,6 +97,7 @@ class InformationPage extends React.Component<{ data: any }, {}> {
   }
 
   render() {
+    console.log(this.props)
     const {
       data: {
         mdx: {
@@ -107,7 +111,6 @@ class InformationPage extends React.Component<{ data: any }, {}> {
             authors: a,
             excerpt,
           },
-          body,
         },
       },
     } = this.props;
@@ -155,26 +158,26 @@ class InformationPage extends React.Component<{ data: any }, {}> {
               pre: Pre,
             }}
           >
-            <MDXRenderer images={images}>
-                {body}
-            </MDXRenderer>
+            <MDXContext.Provider value={{ imagesList: images }}>
+              {this.props.children}
+            </MDXContext.Provider>
           </MDXProvider>
         </div>
       </ArticleLayout>
     );
   }
 }
-
+//
 export const pageQuery = graphql`
-  query ($slug: String!) {
-    mdx(fields: { slug: { eq: $slug } }) {
-      body
+  query ($id: String!) {
+    mdx(id: { eq: $id }) {
       tableOfContents
       frontmatter {
         title
         type
         tag
         date(formatString: "dddd, DD MMMM YYYY", locale: "th")
+        excerpt
         authors {
           id
           name
@@ -191,7 +194,15 @@ export const pageQuery = graphql`
             }
           }
         }
-        excerpt
+
+        images {
+          name
+          publicURL
+          childImageSharp {
+            gatsbyImageData(quality: 90, layout: CONSTRAINED, height: 800)
+          }
+        }
+
         background {
           publicURL
           childImageSharp {
@@ -200,13 +211,6 @@ export const pageQuery = graphql`
               width
               height
             }
-          }
-        }
-        images {
-          name
-          publicURL
-          childImageSharp {
-            gatsbyImageData(quality: 90, layout: CONSTRAINED, height: 800)
           }
         }
       }

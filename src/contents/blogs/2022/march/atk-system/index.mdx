@@ -1,38 +1,36 @@
-import { GatsbyImage } from "gatsby-plugin-image";
+---
+type: blog
+tag: atk-system
+date: 2022-03-09 17:24
+title: การพัฒนาระบบข้อมูล ATK
+authors:
+  - myself
+excerpt: กว่าจะเป็นระบบข้อมูล ATK เพื่อมาใช้ทดแทนระบบเก่าคือ Google form
+background: bg.jpg
+images:
+  - google_form_0.jpg
+  - google_form_1.jpg
+  - google_form_data_1.jpg
+  - atk_analysis_1.jpg
+  - atk_analysis_2.jpg
+  - atk_analysis_3.jpg
+  - app_development_0.jpg
+  - app_development_1.jpg
+  - app_development_2.jpg
+  - app_development_3.jpg
+  - app_development_4.jpg
+  - app_development_5.jpg
+  - app_development_6.jpg
+  - app_development_7.jpg
+  - app_1.jpg
+  - app_2.jpg
+  - app_3.jpg
+  - app_4.jpg
+  - app_5.jpg
+  - app_6.jpg
+---
 
-
-export const frontmatter = {
-  type: "blog",
-  tag: "atk-system",
-  date: "2022-03-09 17:24",
-  title: "การพัฒนาระบบข้อมูล ATK",
-  authors: ["myself"],
-  excerpt:
-    "กว่าจะเป็นระบบข้อมูล ATK เพื่อมาใช้ทดแทนระบบเก่าคือ Google form",
-  background: "bg.jpg",
-  images: [
-    "google_form_0.jpg",
-    "google_form_1.jpg",
-    "google_form_data_1.jpg",
-    "atk_analysis_1.jpg",
-    "atk_analysis_2.jpg",
-    "atk_analysis_3.jpg",
-    "app_development_0.jpg",
-    "app_development_1.jpg",
-    "app_development_2.jpg",
-    "app_development_3.jpg",
-    "app_development_4.jpg",
-    "app_development_5.jpg",
-    "app_development_6.jpg",
-    "app_development_7.jpg",
-    "app_1.jpg",
-    "app_2.jpg",
-    "app_3.jpg",
-    "app_4.jpg",
-    "app_5.jpg",
-    "app_6.jpg",
-  ],
-};
+import { MDXImage } from "@components/mdx-image";
 
 # ที่มาของการพัฒนา
 
@@ -47,14 +45,8 @@ export const frontmatter = {
 
 <div className="image-container">
   <div className="flex flex-col md:flex-row gap-3">
-  <GatsbyImage
-    image={props.images.find(e=>e.name=="google_form_0").childImageSharp.gatsbyImageData}
-    alt="poster"
-  />
-  <GatsbyImage
-    image={props.images.find(e=>e.name=="google_form_1").childImageSharp.gatsbyImageData}
-    alt="poster"
-  />
+    <MDXImage name="google_form_0.jpg" />
+    <MDXImage name="google_form_1.jpg" />
   </div>
   <div>ภาพ Google Form ที่ใช้เก็บข้อมูล</div>
 </div>
@@ -65,16 +57,10 @@ export const frontmatter = {
 
 นอกจากนี้ คนที่กรอกข้อมูลยังต้องกรอกข้อมูลเดิมซ้ำๆ เช่น ชื่อ นามสกุล เลขบัตรประชาชน เบอร์โทรศัพท์ กลุ่มงาน แผนก ที่ทำงาน ทุกครั้งที่ส่งข้อมูลผ่าน Google form ซึ่งก็เพิ่มความลำบากในการกรอก กรอกข้อมูลไม่ตรงกันในแต่ละครั้ง เช่น ชื่อหน่วยงานที่ทำ และกรอกข้อมูลผิด เช่น กรอกเลขบัตรประชาชนบางหลักผิดไป (ตอนนั้นให้กรอก เพราะเพื่อเป็นการเช็คข้อมูลด้วย และไม่สะดวกที่จะมา Merge กับฐานข้อมูลรายชื่อว่าคนนี้เป็นใคร) ทำให้เวลาเอามานับว่าคนนี้ตรวจกี่ครั้งแล้วผิดพลาด เพราะเลขไม่ตรงกัน อีกทั้งเนื่องจากไม่ได้บังคับว่าต้อง Sign in Google Account ก่อน (เพราะบางคนไม่มี และยิ่งยากต่อการกรอก) ทำให้ไม่สามารถแก้ไขได้หลัง submit เกิดการกรอกข้อมูลซ้ำๆ มารัวๆ
 
-<div className="image-container">
-  <GatsbyImage
-    image={
-      props.images.find((e) => e.name == "google_form_data_1").childImageSharp
-        .gatsbyImageData
-    }
-    alt="poster"
-  />
-  <p>ข้อมูลที่ได้จาก Google Form ในรูปของ Google Sheet</p>
-</div>
+<MDXImage
+  name="google_form_data_1.jpg"
+  caption="ข้อมูลที่ได้จาก Google Form ในรูปของ Google Sheet"
+/>
 
 เมื่อจะนำข้อมูลไปวิเคราะห์สถิติเชิงพรรณาว่าแบบแต่ละแผนกตรวจครบหรือไม่ ยังขาดใครจึงต้อง Clean ข้อมูลอย่างยากลำบาก แม้ว่าจะใช้ Pandas ช่วยแล้วก็ตาม ยังมีบางส่วนที่จำเป็นต้อง Clean ด้วยมือ อีกทั้งรายชื่อเจ้าหน้าที่ได้จาก HR ก็ดูเหมือนจะมีจำนวนเจ้าห้นาที่มากกว่าความจริง และไม่ได้รวมพวก Outsource หรือ นักศึกษาแพทย์อย่างครบถ้วน
 
@@ -89,27 +75,9 @@ export const frontmatter = {
 ข้อมูลที่ได้มันต้องมาทำความสะอาดอย่างเยอะ และค่อนข้าง Manual เสียเวลา
 
 <div className="image-container">
-  <GatsbyImage
-    image={
-      props.images.find((e) => e.name == "atk_analysis_1").childImageSharp
-        .gatsbyImageData
-    }
-    alt="poster"
-  />
-    <GatsbyImage
-    image={
-      props.images.find((e) => e.name == "atk_analysis_2").childImageSharp
-        .gatsbyImageData
-    }
-    alt="poster"
-  />
-    <GatsbyImage
-    image={
-      props.images.find((e) => e.name == "atk_analysis_3").childImageSharp
-        .gatsbyImageData
-    }
-    alt="poster"
-  />
+  <MDXImage name="atk_analysis_1.jpg" />
+  <MDXImage name="atk_analysis_2.jpg" />
+  <MDXImage name="atk_analysis_3.jpg" />
   <p>การวิเคราะห์ข้อมูล</p>
 </div>
 
@@ -124,31 +92,13 @@ export const frontmatter = {
 
 หลักการคือผมต้องเตรียม Table ของแต่ละประเภทของ Entity แยกจากกัน และแต่ละ Entity จะมีความสัมพันธ์กันด้วย Primary และ Foreign Key เพื่อที่จะได้สามารถนำข้อมูลเข้าไปยัง Relational database ได้ ดังนั้นผมจะใช้ Pandas ซึ่งเป็น Library บน Python 3 ผ่าน Jupyter บน Visual Studio Code ในการเตรียมข้อมูล นำเข้าไฟล์ HR โดยใช้ `pd.read_excel("HR.xlsx")` ก่อนจากนั้น `drop_duplicate(subset=[“Department”])` รายชื่อที่ได้จาก HR เพื่อให้ Dataframe เหลือแต่รายชื่อกลุ่มงานที่ไม่ซ้ำกัน แล้วสร้าง Primary Key ด้วย UUID4 แล้วส่งออกข้อมูลเป็น JSON โดยใช่ `pd.to_json("departments.json",orients="records")`
 
-<div className="image-container">
-  <GatsbyImage
-    image={
-      props.images.find((e) => e.name == "app_development_1").childImageSharp
-        .gatsbyImageData
-    }
-    alt="poster"
-  />
-  <p>การเตรียมรายชื่อกลุ่มงาน</p>
-</div>
+<MDXImage name="app_development_1.jpg" caption="การเตรียมรายชื่อกลุ่มงาน"/>
 
 ## เตรียมข้อมูลรายชื่อแผนก (Division)
 
 ทำแบบเดียวกันนี้กับแผนก โดย `drop_duplicate(subset=[“Department”,”Division”])` เพื่อสร้าง Dataframe ที่มีรายชื่อแผนกที่ไม่ซ้ำกัน แล้วสร้าง Primary Key เช่นเดียวกัน และใช้ `df_divisions.merge(df_departments.rename(columns={"Id":"DepartmentId"}),how="left",on="กลุ่มงาน")` (join วิธีไหนก็ไม่ต่างกันในกรณีนี้) กับ departments เพื่อสร้าง Foreign key (ซึ่งก็คือ DepartmentId) แล้ว `pd.to_json()` เป็น divisions.json
 
-<div className="image-container">
-  <GatsbyImage
-    image={
-      props.images.find((e) => e.name == "app_development_2").childImageSharp
-        .gatsbyImageData
-    }
-    alt="poster"
-  />
-  <p>การเตรียมรายชื่อแผนก</p>
-</div>
+<MDXImage name="app_development_2.jpg" caption="การเตรียมรายชื่อแผนก"/>
 
 ## เตรียมข้อมูลรายชื่อคนตรวจ (Person)
 
@@ -157,29 +107,11 @@ export const frontmatter = {
 ที่นี้จะเหลือแต่คนที่ไม่ matched อะไรเลย ตรงนี้ผมและทีมงานจำเป็นต้องตรวจสอบและแก้ไขด้วยมือซึ่งมีประมาณ 200 กว่า Entry
 จากนั้น จึงนำเข้าไปรวมกับรายชื่อที่ได้ในตอนแรก
 
-<div className="image-container">
-  <GatsbyImage
-    image={
-      props.images.find((e) => e.name == "app_development_3").childImageSharp
-        .gatsbyImageData
-    }
-    alt="poster"
-  />
-  <p>การรวมรายชื่อที่ทำความสะอาดแล้ว</p>
-</div>
+<MDXImage name="app_development_3.jpg" caption="การรวมรายชื่อที่ทำความสะอาดแล้ว"/>
 
 เมื่อรวมรายชื่อแล้ว ก็สร้าง Primary Key ด้วย UUID4 เหมือนเดิม
 
-<div className="image-container">
-  <GatsbyImage
-    image={
-      props.images.find((e) => e.name == "app_development_4").childImageSharp
-        .gatsbyImageData
-    }
-    alt="poster"
-  />
-  <p>การเตรียมรายชื่อคน</p>
-</div>
+<MDXImage name="app_development_4.jpg" caption="การเตรียมรายชื่อคน"/>
 
 ## เตรียมข้อมูลชนิดของ ATK
 
@@ -188,44 +120,17 @@ export const frontmatter = {
 1. Replace ชื่อยี่ห้อการตรวจในของ Entries 14900 ครั้ง โดยดูจาก string 200 แบบว่ามันมี pattern อะไรบ้าง และมันเป็นของยี่ห้อไหน แล้วใช้ Regular expression ในการ Replace
 2. อันที่ดูไม่รู้เรื่อง ก็ใช้ข้อมูลช่วงวันการตรวจว่า เป็นช่วงที่แจก ATK ยี่ห้อไหนแทน
 
-<div className="image-container">
-  <GatsbyImage
-    image={
-      props.images.find((e) => e.name == "app_development_5").childImageSharp
-        .gatsbyImageData
-    }
-    alt="poster"
-  />
-  <p>ทำความสะอาดรายชื่อ ATK</p>
-</div>
+<MDXImage name="app_development_5.jpg" caption="ทำความสะอาดรายชื่อ ATK"/>
 
 เมื่อทำแล้วจะเหลือ ATK อยู่ไม่กี่ยี่ห้อ แล้วจึง `drop_duplicate` แล้วสร้าง Primary Key ด้วย UUID4 เช่นเดิม แล้ว export เป็น atk.json
 
-<div className="image-container">
-  <GatsbyImage
-    image={
-      props.images.find((e) => e.name == "app_development_6").childImageSharp
-        .gatsbyImageData
-    }
-    alt="poster"
-  />
-  <p>การเตรียมรายชื่อ ATK</p>
-</div>
+<MDXImage name="app_development_6.jpg" caption="การเตรียมรายชื่อ ATK"/>
 
 ## เตรียมข้อมูลรายการตรวจ (Entry)
 
 ตรงนี้ก็จะง่ายขึ้นแล้ว เพราะส่วนยากของการเตรียมข้อมูลได้ทำไปหมดแล้ว ตรงนี้เหลือแค่สร้าง Primary Key ด้วย UUID4 จากนั้นตัด columns ที่ไม่จำเป็นออกไป (เพราะเราจะ inner join กับ table อื่น) แล้ว inner join (เพราะลอง left join แล้วพบว่าข้อมูลมันตรงกันหมด แน่หล่ะ มันมาจากแหล่งข้อมูลเดียวกัน) กับ atk และ people เพื่อให้ได้ foregin key AntigenTestKitId และ PersonId
 
-<div className="image-container">
-  <GatsbyImage
-    image={
-      props.images.find((e) => e.name == "app_development_7").childImageSharp
-        .gatsbyImageData
-    }
-    alt="poster"
-  />
-  <p>การเตรียมรายการตรวจ</p>
-</div>
+<MDXImage name="app_development_7.jpg" caption="การเตรียมรายการตรวจ"/>
 
 # พัฒนาโปรแกรม
 
@@ -276,6 +181,7 @@ export const frontmatter = {
     </EditForm>
 </LoadingView>
 ```
+
 ```csharp
 @code{
    private bool IsReady;
@@ -307,17 +213,19 @@ export const frontmatter = {
     ..omitted..
 }
 ```
+
 <p className="text-center">ตัวอย่าง ฺBlazor บางส่วนของหน้าสมัครผู้ใช้งาน</p>
 
 ส่วนของ CSS นั้น ผมไม่เขียนเองโดยตรงทั้งหมดแต่ใช้ Tailwind CSS 3 ช่วย มันทำให้งานง่ายตรงที่เราสามารถใช้ Utility class ทั้งหมด ใส่ลงไปใน <tag class="" /> ได้เลย โดยไม่ต้องสลับไปมาระหว่าง CSS และมันสามารถ Trim ตัว CSS ให้เหลือเฉพาะที่เราใช้จริงๆ ได้ และถามว่า class จะ รกไปหมดไหม ก็ตอบว่ามันแก้ได้โดยการที่เรา สร้าง Blazor component ขึ้นมาใหม่ หรือเรารวมเป็น class เดียวกันได้แบบนี้
 
 ```css
 @layer componenets {
-  .my-component { 
+  .my-component {
     @apply rounded-xl shadow-xl flex flex-row gap-6 flex-wrap;
   }
 }
 ```
+
 <p className="text-center">ตัวอย่างการใช้งาน Tailwind CSS</p>
 
 ### BackEnd : ASP.Net Core
@@ -328,40 +236,10 @@ export const frontmatter = {
 
 ### สถิติ + อัพเดตข้อมูลทุก ๆ 1 นาที เมื่อจำเป็น + ส่งสัญญาณการอัพเดตข้อมูลมายัง Client ด้วย SignalR
 
-<div className="image-container">
-  <GatsbyImage
-    image={
-      props.images.find((e) => e.name == "app_1").childImageSharp
-        .gatsbyImageData
-    }
-    alt="poster"
-  />
-  <p>สถิติภาพรวมK</p>
-    <GatsbyImage
-    image={
-      props.images.find((e) => e.name == "app_2").childImageSharp
-        .gatsbyImageData
-    }
-    alt="poster"
-  />
-  <p>สถิติรายกลุ่มงาน</p>
-    <GatsbyImage
-    image={
-      props.images.find((e) => e.name == "app_3").childImageSharp
-        .gatsbyImageData
-    }
-    alt="poster"
-  />
-  <p>สถิติรายแผนก</p>
-    <GatsbyImage
-    image={
-      props.images.find((e) => e.name == "app_6").childImageSharp
-        .gatsbyImageData
-    }
-    alt="poster"
-  />
-  <p>สถิติรายวัน สำหรับ Admin</p>
-</div>
+<MDXImage name="app_1.jpg" caption="สถิติภาพรวม"/>
+<MDXImage name="app_2.jpg" caption="สถิติรายกลุ่มงาน"/>
+<MDXImage name="app_3.jpg" caption="สถิติรายแผนก"/>
+<MDXImage name="app_6.jpg" caption="สถิติรายวัน สำหรับ Admin"/>
 
 ระบบจะคำนวนสถิติเองทุกๆ 1 นาที เมื่อมีคนสส่งข้อมูล (และไม่คำนวนถ้าไม่มีข้อมูลใหม่) และเม่อคำนวนเสร็จจะแจ้ง Client ว่ามีข้อมูลใหม่ให้อัพเดตอัตโนมัติ
 
@@ -391,30 +269,15 @@ lock (lockObject)
     CurrentDepartmentsStatistic = new DepartmentsStatistic(DateTimeOffset.Now, b);
 }
 ```
+
 <p className="text-center">บางส่วนของการคำนวน</p>
 
 ### กรอกฟอร์มและดูประวัติตนเอง และแก้ไขได้
 
 กรอกข้อมูลง่านยเพราะไม่ต้่องกรอกใหม่หมดทุกอย่าง และสามารถกลับมาแก้ไขได้
 
-<div className="image-container">
-  <GatsbyImage
-    image={
-      props.images.find((e) => e.name == "app_4").childImageSharp
-        .gatsbyImageData
-    }
-    alt="poster"
-  />
-  <p>กรอกฟอร์ม</p>
-    <GatsbyImage
-    image={
-      props.images.find((e) => e.name == "app_5").childImageSharp
-        .gatsbyImageData
-    }
-    alt="poster"
-  />
-  <p>ประวัติตนเอง</p>
-</div>
+<MDXImage name="app_4.jpg" caption="กรอกฟอร์ม"/>
+<MDXImage name="app_5.jpg" caption="ประวัติตนเอง"/>
 
 ### สมัครผู้ใช้งานใหม่เพิ่มเติมเองได้
 

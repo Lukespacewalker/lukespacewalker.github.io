@@ -1,14 +1,17 @@
-import { GatsbyImage } from "gatsby-plugin-image";
+---
+type: project
+tag: new-logbook
+date: 2019-11-30 14:16
+authors: 
+  - myself
+title: Electronic Logbook
+excerpt: ระบบ Electronic Logbook สำหรับ OccMed Resident
+background: logbook_interface.jpg
+images:
+  - logbook.jpg
+---
 
-export const frontmatter = {
-	type: "project",
-	tag: "logbook",
-	date: "2019-11-30 14:16",authors: ["myself"],
-	title: "Electronic Logbook",
-	excerpt: "ระบบ Electronic Logbook สำหรับ OcMed Resident",
-	background: "logbook_interface.jpg",
-	images: ["logbook_interface.jpg","logbook.jpg"]
-}
+import { MDXImage } from "@components/mdx-image";
 
 # ที่มา
 
@@ -31,5 +34,5 @@ export const frontmatter = {
 
 # Screenshot
 
-<GatsbyImage image={props.images[1].childImageSharp.gatsbyImageData} alt="poster" />
+<MDXImage name="logbook.jpg" caption="หน้าตาการใช้งาน" />
 

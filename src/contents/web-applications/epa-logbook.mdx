@@ -1,14 +1,17 @@
-import { GatsbyImage } from "gatsby-plugin-image";
+---
+type: project
+tag: new-logbook
+date: 2021-05-07 14:16
+authors: 
+  - myself
+title: Electronic Logbook
+excerpt: ระบบ Electronic Logbook สำหรับ OccMed Resident
+background: new-logbook.jpg
+images:
+  - new-logbook_interface.jpg
+---
 
-export const frontmatter = {
-	type: "project",
-	tag: "new- logbook",
-	date: "2021-05-07 14:16",authors: ["myself"],
-	title: "Electronic Logbook",
-	excerpt: "ระบบ Electronic Logbook สำหรับ OcMed Resident",
-	background: "new-logbook.jpg",
-	images: ["new-logbook.jpg","new-logbook_interface.jpg"]
-}
+import { MDXImage } from "@components/mdx-image";
 
 # ที่มา
 
@@ -26,8 +29,8 @@ export const frontmatter = {
 
 # สถานะปัจจุบัน
 
-สามารถเข้าดูได้ที่ [logbookoccmed.md.chula.ac.th](https://logbookoccmed.md.chula.ac.th/) แต่ตอนนี้อาจจะไม่ได้ใช้งานแล้ว เพราะแล้วแต่ละสถานบันไปตกลงกันเองแทน
+สามารถเข้าดูได้ที่ [logbookoccmed.md.chula.ac.th](https://logbookoccmed.md.chula.ac.th/) แต่ตอนนี้อาจจะไม่ได้ใช้งานแล้ว เพราะแล้วแต่ละสถาบันไปตกลงกันเองแทน
 
 # Screenshot
 
-<GatsbyImage image={props.images[1].childImageSharp.gatsbyImageData} alt="poster" />
+<MDXImage name="new-logbook_interface.jpg" caption="หน้าตาการใช้งาน" />

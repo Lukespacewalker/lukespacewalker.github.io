@@ -1,20 +1,20 @@
-import { GatsbyImage } from "gatsby-plugin-image";
+---
+type: program
+tag: healthtag-nfc-scanner
+date: 2022-07-23 10:09
+authors: 
+  - myself
+title: HealthTAG NFC Scanner
+excerpt: โปรแกรมที่ใช้เชื่อมต่อกับ NFC Reader ของ Silicon craft ที่ HealhTAG ใช้งาน
+background: new-3.png
+images:
+  - old.png
+  - new-1.png
+  - new-2.png
+  - new-3.png
+---
 
-export const frontmatter = {
-  type: "program",
-  tag: "healthtag-nfc-scanner",
-  date: "2022-07-23 10:09",
-  title: "HealthTAG NFC Scanner",
-  authors: ["myself"],
-  excerpt: "โปรแกรมที่ใช้เชื่อมต่อกับ NFC Reader ของ Silicon craft ที่ HealhTAG ใช้งาน",
-  background: "new-3.png",
-  images: [
-    "old.png",
-    "new-1.png",
-    "new-2.png",
-    "new-3.png"
-  ],
-};
+import { MDXImage } from "@components/mdx-image";
 
 โปรแกรมที่ใช้เชื่อมต่อกับ NFC Reader ของ Silicon craft ADR12 ที่ HealhTAG ใช้งาน โดยเครื่องอ่านจะเชื่อมต่อผ่านทาง COM port
 
@@ -29,27 +29,15 @@ export const frontmatter = {
 1. เสียบสาย USB Type-C กับเครื่องอ่านและเสียบสาย USB Type-A กับคอมพิวเตอร์ จะได้ยินเสียง Beep และไม่จำเป็นต้องติดตั้ง Driver ใดๆ เพิ่มเติม
 2. เปิดโปรแกรมการนั้นเลือก NFC Reader ที่ต้องการเชื่อมต่อ
 
-<GatsbyImage
-  image={props.images[1].childImageSharp.gatsbyImageData}
-  style={{ height: `500px` }}
-  alt="poster"
-/>
+<MDXImage name="new-1.png" />
 
 3. แตะ NFC Tag บน NFC Reader เพื่ออ่านข้อมูลที่บันทึกอยู่ ผู้ใช้งานยังสามารถเลือกได้ว่าต้องการให้เปิดบราว์เซอร์อัตโนมัติหรือไม่ และต้องการใช้บราว์เซอร์ใดในการเปิด
 
-<GatsbyImage
-  image={props.images[3].childImageSharp.gatsbyImageData}
-  style={{ height: `500px` }}
-  alt="poster"
-/>
+<MDXImage name="new-3.png" />
 
 4. ผู้ใช้งานสามารถตั้งค่าต่างๆ เช่น ภาษา กรองรายชื่ออุปกรณ์ที่ไม่ต้องการ หรือที่อยู่ของบราวเซอร์ที่ติดตั้งในเครื่อง
 
-<GatsbyImage
-  image={props.images[2].childImageSharp.gatsbyImageData}
-  style={{ height: `500px` }}
-  alt="poster"
-/>
+<MDXImage name="new-2.png" />
 
 ## ดาวน์โหลด
 

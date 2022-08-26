@@ -14,22 +14,24 @@ export const MDXImage = ({
   mode: "block" | "inline-block";
   className: string;
   name: string;
-  caption?: string;
+  caption?: string | React.ReactNode;
   alt: string;
   [x: string]: any;
 }) => {
-  imageList = imageList ?? React.useContext(MDXContext).imagesList
+  imageList = imageList ?? React.useContext(MDXContext).imagesList;
   const image = imageList.find(
     (image) => image.name === name.substring(0, name.lastIndexOf("."))
   );
   return (
-    <div className={`${className} ${mode}`}>
-      <GatsbyImage
-        image={image.childImageSharp.gatsbyImageData}
-        {...otherProps}
-        alt={alt}
-      />
-      {caption && <div className="text-center">{caption}</div>}
+    <div className="image-container">
+      <div className={`${className} ${mode}`}>
+        <GatsbyImage
+          image={image.childImageSharp.gatsbyImageData}
+          {...otherProps}
+          alt={alt}
+        />
+        {caption && <div className="text-center">{caption}</div>}
+      </div>
     </div>
   );
 };

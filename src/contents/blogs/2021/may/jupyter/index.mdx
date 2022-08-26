@@ -1,15 +1,24 @@
-import { GatsbyImage } from "gatsby-plugin-image";
+---
+type: blog
+tag: jupyter
+date: 2021-05-07 18:09
+title: การติดตั้ง Python + Jupyter Lab บน Windows 10
+authors: myself
+excerpt: แนะนำการติดตั้ง Python + Jupyter Lab และการใช้งานผ่าน Visual Studio Code
+background: jupyter.png
+images:
+  - step1-installpython.png
+  - step2-checkpython.png
+  - step3-checkpath.png
+  - step3-addpath.png
+  - step3-addpath2.png
+  - step4-run.png
+  - step4-jupyter.png
+  - step5-vsextension.png
+  - step5-add.png
+---
 
-export const frontmatter = {
-  type: "blog",
-  tag: "jupyter",
-  date: "2021-05-07 18:09",
-  title: "การติดตั้ง Python + Jupyter Lab บน Windows 10",
-  authors: ["myself"],
-  excerpt: "แนะนำการติดตั้ง Python + Jupyter Lab และการใช้งานผ่าน Visual Studio Code",
-  background: "jupyter.png",
-  images: ["jupyter.png","step1-installpython.png","step2-checkpython.png","step3-checkpath.png","step3-addpath.png","step3-addpath2.png","step4-run.png","step4-jupyter.png","step5-vsextension.png","step5-add.png"],
-};
+import { MDXImage } from "@components/mdx-image";
 
 แนะนำการติดตั้ง Python + Jupyter Lab และการใช้งานผ่าน Visual Studio Code บน Windows 10
 
@@ -22,7 +31,8 @@ export const frontmatter = {
 
 # ขั้นตอนการติดตั้ง
 ## ติดตั้ง Python 3.9 ผ่าน Microsoft Store
-<GatsbyImage image={props.images[1].childImageSharp.gatsbyImageData} />
+
+<MDXImage name="step1-installpython.png" />
 
 หลังติดตั้งแล้วให้ทำการตรวจสอบ Version ดู
 
@@ -30,7 +40,7 @@ export const frontmatter = {
 python --version
 ```
 
-<GatsbyImage image={props.images[2].childImageSharp.gatsbyImageData} />
+<MDXImage name="step2-checkpython.png" />
 
 ## ติดตั้ง Jupyter Labs
 
@@ -52,20 +62,20 @@ jupyter lab
 C:\Users\<User-Name>\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.9_qbz5n2kfra8p0\LocalCache\local-packages\Python39\Scripts
 ```
 
-<GatsbyImage image={props.images[3].childImageSharp.gatsbyImageData} />
+<MDXImage name="step3-checkpath.png" />
 
 เมื่อเจอกับไฟล์ `jupyter.exe` ในโฟล์เดอร์นี้แล้วให้ทำการเพิ่ม Environmental variables โดยเพิ่มไปที่ System variables ที่ชื่อว่า Path ตามรูป
 
-<GatsbyImage image={props.images[4].childImageSharp.gatsbyImageData} />
-<GatsbyImage image={props.images[5].childImageSharp.gatsbyImageData} />
+<MDXImage name="step3-addpath.png" />
+<MDXImage name="step3-addpath2.png" />
 
 จากนั้นให้ปิด Command Prompt / Windows Terminal แล้วเปิดใหม่เพื่อให้มันโหลด Environmental variables แล้วรัน `jupyter lab` อีกครั้ง จะได้แบบนี้
 
-<GatsbyImage image={props.images[6].childImageSharp.gatsbyImageData} />
+<MDXImage name="step4-run.png" />
 
 ให้คลิก URL ที่มันบอกเพื่อเปิด Jupyter Lab ใน Browser
 
-<GatsbyImage image={props.images[7].childImageSharp.gatsbyImageData} />
+<MDXImage name="step4-jupyter.png" />
 
 # ติดตั้ง Libaries ที่จำเป็น
 ## [Panda](https://pandas.pydata.org/docs/getting_started/install.html#dependencies)
@@ -87,8 +97,8 @@ jupyter labextension install @jupyter-widgets/jupyterlab-manager plotlywidget
 
 ทำการติดตั้ง Extension ชื่อ Python Pylance และ Jupyter
 
-<GatsbyImage image={props.images[8].childImageSharp.gatsbyImageData} />
+<MDXImage name="step5-vsextension.png" />
 
 จากนั้นกด Control+Shift+P เพื่อเปิด Command Pane แล้วพิมพ์ Jupyter แล้วเลือก Create New Blank Notebook ก็เรียบร้อย
 
-<GatsbyImage image={props.images[9].childImageSharp.gatsbyImageData} />
+<MDXImage name="step5-add.png" />
