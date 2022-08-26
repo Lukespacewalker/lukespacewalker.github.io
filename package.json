@@ -45,9 +45,9 @@
   ],
   "license": "MIT",
   "scripts": {
-    "build": "set NODE_OPTIONS=--max-old-space-size=8096 && gatsby build --verbose",
+    "build": "gatsby build --verbose",
     "build:win": "set NODE_OPTIONS=--openssl-legacy-provider && gatsby build",
-    "develop": "set NODE_OPTIONS=--max-old-space-size=8096 && gatsby develop --verbose",
+    "develop": "gatsby develop --verbose",
     "develop:win": "set NODE_OPTIONS=--openssl-legacy-provider && gatsby develop",
     "start": "npm run develop",
     "serve": "gatsby serve",
