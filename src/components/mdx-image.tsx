@@ -19,19 +19,21 @@ export const MDXImage = ({
   [x: string]: any;
 }) => {
   imageList = imageList ?? React.useContext(MDXContext).imagesList;
-  const image = imageList.find(
+  const image = imageList?.find(
     (image) => image.name === name.substring(0, name.lastIndexOf("."))
   );
   return (
-    <div className="image-container">
-      <div className={`${className} ${mode}`}>
-        <GatsbyImage
-          image={image.childImageSharp.gatsbyImageData}
-          {...otherProps}
-          alt={alt}
-        />
-        {caption && <div className="text-center">{caption}</div>}
+    image && (
+      <div className="image-container">
+        <div className={`${className} ${mode}`}>
+          <GatsbyImage
+            image={image.childImageSharp.gatsbyImageData}
+            {...otherProps}
+            alt={alt}
+          />
+          {caption && <div className="text-center">{caption}</div>}
+        </div>
       </div>
-    </div>
+    )
   );
 };

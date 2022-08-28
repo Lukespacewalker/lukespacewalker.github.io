@@ -1,20 +1,21 @@
-import { GatsbyImage } from "gatsby-plugin-image";
+---
+type: blog
+tag: endnote
+date: 2019-09-17 14:16
+title: แก้ปัญหาภาษาไทยใน End Note X9
+authors: 
+  - myself
+excerpt: การแก้ปัญหาการแสดงผลภาษาไทย ที่เป็น สี่เหลี่ยม ในแท็บ Reference
+background: endnote.jpg
+images: 
+  - endnote1.jpg
+  - endnote2.jpg
+---
 
-export const frontmatter = {
-	type: "blog",
-	tag: "endnote",
-	date: "2019-09-17 14:16",
-	authors: ["myself"],
-	title: "แก้ปัญหาภาษาไทยใน End Note X9",
-	excerpt: "การแก้ปัญหาการแสดงผลภาษาไทย ที่เป็น สี่เหลี่ยม ในแท็บ Reference",
-	background: "endnote.jpg",
-	images: ["endnote.jpg","endnote1.jpg","endnote2.jpg"]
-}
+import { MDXImage } from "@components/mdx-image";
 
-<div className="two-grid">
-    <GatsbyImage image={props.images[1].childImageSharp.gatsbyImageData} alt="poster" style={{maxHeight:`500px`}} imgStyle={{objectFit:`contain`}} />
-    <GatsbyImage image={props.images[2].childImageSharp.gatsbyImageData} alt="poster" imgStyle={{objectFit:`contain`}}/>
-</div>
+<MDXImage name="endnote1.jpg"/>
+<MDXImage name="endnote2.jpg"/>
 
 1. ไปที่ Edit > Preferences...
 2. เลือกหัวข้อ Display Fonts ทางซ้าย จากนั้นเลือกแทบ General ทางขวามือ

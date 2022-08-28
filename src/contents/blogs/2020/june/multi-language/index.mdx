@@ -1,42 +1,36 @@
-import { GatsbyImage } from "gatsby-plugin-image";
+---
+type: blog
+tag: endnote
+date: 2020-06-20 14:16
+title: การสร้าง Template สำหรับ EndNote ให้สามารถใช้ได้หลายภาษาพร้อมกัน
+authors: 
+  - myself
+excerpt: ปกติ End Note มี Template ภาษาอังกฤษอย่างเดียว แต่หลายครั้งที่เราต้องมี Reference ทั้งภาษาไทยและภาษาอังกฤษ
+background: endnote2.png
+images: 
+  - demo.png
+  - step1.png
+  - step2.png
+  - step3.png
+  - step3A.png
+  - step4.png
+  - step5.png
+  - step6.png
+  - step7.png
+  - step8.png
+  - step8A.png
+  - step9.png
+  - step10.png
+  - down.png
+---
 
-export const frontmatter = {
-  type: "blog",
-  tag: "endnote",
-  date: "2020-06-20 14:16",
-  authors: ["myself"],
-  title: "การสร้าง Template สำหรับ EndNote ให้สามารถใช้ได้หลายภาษาพร้อมกัน",
-  excerpt:
-    "ปกติ End Note มี Template ภาษาอังกฤษอย่างเดียว แต่หลายครั้งที่เราต้องมี Reference ทั้งภาษาไทยและภาษาอังกฤษ",
-  background: "endnote2.png",
-  images: [
-    "endnote2.png",
-    "demo.png",
-    "step1.png",
-    "step2.png",
-    "step3.png",
-    "step3A.png",
-    "step4.png",
-    "step5.png",
-    "step6.png",
-    "step7.png",
-    "step8.png",
-    "step8A.png",
-    "step9.png",
-    "step10.png",
-    "down.png",
-  ],
-};
+import { MDXImage } from "@components/mdx-image";
 
 ปกติโปรแกรม EndNote X9.3 มีรูปแบบ Reference Type ได้มากสุด 59 แบบ โดยเป็น Unused (คืออันที่ว่างสำหรับผู้ใช้ปรับแต่งเอง) 3 แบบจาก 59 แบบ แต่ Template ในการสร้างบรรณานุกรรมนั้นมีแต่ภาษาอังกฤษเพียงอย่างเดียว ซึ่งจะเกิดปัญหาโดยเฉพาะงานที่ต้องอ้างอิง ทั้งภาษาไทยและภาษาอังกฤษ
 
 **ตัวอย่างการอ้างอิงสองภาษา**
 
-<GatsbyImage
-  image={props.images[1].childImageSharp.gatsbyImageData}
-  alt="poster"
-  imgStyle={{ objectFit: `contain` }}
-/>
+<MDXImage name="demo.png"/>
 
 ปํญหาที่สำคัญคือการที่มี Reference Type ได้มากสุด 59 แบบเท่านั้น ไม่สามารถเพิ่มได้ แปลว่าหากเราใช้ Unused 3 อันหมดแล้ว เราจะต้องแกไขรูปแบบการอ้างอิงที่เราไม่ได้ใช้ แทน ซึ่งไร้สาระมากที่มีข้อจำกัดแบบนี้
 
@@ -48,120 +42,63 @@ export const frontmatter = {
 
 [Vancouver 2019.ens](</endnote/Vancouver 2019.ens>) ให้เอาไฟล์ไปไว้ที่ Document > EndNote > Styles
 
-<GatsbyImage
-  image={props.images[14].childImageSharp.gatsbyImageData}
-  alt="poster"
-  imgStyle={{ objectFit: `contain` }}
-/>
+<MDXImage name="step10.png"/>
 
 # วิธีการแก้ไข Reference Type
 
 ## 1. เปิด Preference
 
-<GatsbyImage
-  image={props.images[2].childImageSharp.gatsbyImageData}
-  alt="poster"
-  imgStyle={{ objectFit: `contain` }}
-/>
+<MDXImage name="step1.png"/>
 
 ## 2. เลือก Export...
 
 โดยเราจะได้ไฟล์ .XML มาซึ่งมีข้อมูลเกี่ยว Reference Type ทั้งหมด
 
-<GatsbyImage
-  image={props.images[3].childImageSharp.gatsbyImageData}
-  alt="poster"
-  imgStyle={{ objectFit: `contain` }}
-/>
+<MDXImage name="step2.png"/>
 
 ## 3. เปิดไฟล์ XML นั้นขึ้นมาเพื่อทำการแก้ไข
 
 **ให้สำรองไฟล์ XML ที่ export ออกมาก่อน**
 
-<GatsbyImage
-  image={props.images[4].childImageSharp.gatsbyImageData}
-  alt="poster"
-  imgStyle={{ objectFit: `contain` }}
-/>
+<MDXImage name="step3.png"/>
 
 โดยเราอาจจะ คัดลอก FieldType จาก Reference Type รูปแบบอื่นๆ มาเป็น Template ได้ และการเปลี่ยนขื่อจาก Unused เป็นอย่างอื่นเช่น ในตัวอย่าง เป็น Web Page TH โดยที่ต้องทำแบบนี้เพื่อให้เรามี Reference Type ที่ต่างกันเพื่อที่จะได้มาแก้ Bibliography Template แยกกันได้ เช่น Web Page เราจะใช้เป็นภาษาอังกฤษ ในขณะที่ Web Page TH เราจะใช้ภาษาไทย เป็นต้น
 
 **ตัวอย่างการแก้ไข Web Page TH ซึ่งเป็นการคัดลอก Wep Page มา**
 
-<GatsbyImage
-  image={props.images[5].childImageSharp.gatsbyImageData}
-  alt="poster"
-  imgStyle={{ objectFit: `contain` }}
-/>
+<MDXImage name="step3A.png"/>
 
 ## 4. เลือก Import...
 
 Import ไฟล์ XML ที่เราแก้ไขแล้วกลับเข้าไป
 
-<GatsbyImage
-  image={props.images[3].childImageSharp.gatsbyImageData}
-  alt="poster"
-  imgStyle={{ objectFit: `contain` }}
-/>
+<MDXImage name="step2.png"/>
 
 ## 5. ทำการแก้ไข Output Style
 
-<GatsbyImage
-  image={props.images[6].childImageSharp.gatsbyImageData}
-  alt="poster"
-  imgStyle={{ objectFit: `contain` }}
-/>
+<MDXImage name="step4.png"/>
 
 เมื่อเปิดแล้วให้เลือกหัวข้อ Bibliography จาก TreeView ทางด้านซ้ายมือ จากนั้นให้กด Reference Type เพื่อเปิด Reference Type ที่เราสร้างขึ้นใหม่ เช่น Legal Rule and Regulation TH, Internet และ Web Page TH
 
-<GatsbyImage
-  image={props.images[7].childImageSharp.gatsbyImageData}
-  alt="poster"
-  imgStyle={{ objectFit: `contain` }}
-/>
+<MDXImage name="step5.png"/>
 
 จากนั้นให้ทำการแก้ไข Template ข้างใน เช่น Web Page TH และ Legal Rule and Regulation TH, Internet
 
-<GatsbyImage
-  image={props.images[8].childImageSharp.gatsbyImageData}
-  alt="poster"
-  imgStyle={{ objectFit: `contain` }}
-/>
-
-<GatsbyImage
-  image={props.images[9].childImageSharp.gatsbyImageData}
-  alt="poster"
-  imgStyle={{ objectFit: `contain` }}
-/>
+<MDXImage name="step6.png"/>
+<MDXImage name="step7.png"/>
 
 จากนั้นทำการบันทึกรูปแบบนั้น เช่น ในตัวอย่างคือ Vancouver 2019 หรือถ้าแก้ไขรูปแบบที่มีอยู่แล้วต้องทำการบันทึกด้วยชื่อใหม่ เช่น Vancouver 2 เป็นต้น ซึ่งรูปแบบใหม่นี้จะไม่ปรากฎให้เลือก ต้องไปทำการเปิดใช้ก่อน
 
 ### กรณีบันทึกเป็นชื่อใหม่ ให้ทำการเปิดใช้
 
-<GatsbyImage
-  image={props.images[10].childImageSharp.gatsbyImageData}
-  alt="poster"
-  imgStyle={{ objectFit: `contain` }}
-/>
+<MDXImage name="step8.png"/>
+<MDXImage name="step8A.png"/>
 
-<GatsbyImage
-  image={props.images[11].childImageSharp.gatsbyImageData}
-  alt="poster"
-  imgStyle={{ objectFit: `contain` }}
-/>
 
 ## 6. กรอกรายละเอียด Reference ตามปกติ แล้วเลือก Reference Type เป็นรูปแบบใหม่ที่ทำเช่น Legal Rule and Regualtion TH
 
-<GatsbyImage
-  image={props.images[12].childImageSharp.gatsbyImageData}
-  alt="poster"
-  imgStyle={{ objectFit: `contain` }}
-/>
+<MDXImage name="step9.png"/>
 
 ## 7. สุดท้าย อย่าลืมเปลี่ยน Style เป็นอันใหม่ที่เราแก้ไข เช่น Vancouver 2 เป็นต้น
 
-<GatsbyImage
-  image={props.images[13].childImageSharp.gatsbyImageData}
-  alt="poster"
-  imgStyle={{ objectFit: `contain` }}
-/>
+<MDXImage name="step10.png"/>
