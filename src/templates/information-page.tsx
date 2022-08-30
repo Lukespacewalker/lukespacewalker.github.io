@@ -25,7 +25,7 @@ class InformationPage extends React.Component<
       window.location.hash = "";
     }
   }
-  private useTOC = true;
+  private useTOC = false;
 
   private target: string;
 
