@@ -50,8 +50,12 @@ images:
   - validation-warning.png
   - validation-error.png
   - validation-error-msg.png
+  - validation-input-msg.png
   - validation-formatting-1.png
+  - validation-formatting-2.png
   - validation-formatting.png
+  - validation-format-painter.png
+  - validation-format-filter.png
 ---
 
 import { MDXImage } from "@components/mdx-image";
@@ -236,6 +240,7 @@ Drag cells ที่ต้องการทำให้เป็น Table จ�
 
 <MDXImage name="validation-list-1.png" />
 <MDXImage name="validation-list-2.png" />
+<MDXImage name="validation-custom.png" />
 
 จากนั้นสามารถกำหนด Input message ที่ต้องการให้แสดงเวลาเลือก Cell และเวลากรอกข้อมูลผิดได้ โดยสามารถเลือก Action ได้ 3 แบบ คือ Stop คือต้องแก้ข้อมูลให้ถูกเท่านั้น Warning คือเตือนสามารถยกเลิกหรือยืนยันไปต่อได้ Information คือแจ้งให้ทราบเท่านั้น
 
@@ -250,6 +255,26 @@ Drag cells ที่ต้องการทำให้เป็น Table จ�
 เรายังสามารถให้ Excel แสดงข้อมูลที่ผิดพลาดได้ ซึ่งมีประัโยชน์เวลาเราได้ข้อมูลมาแล้วมาใส่ Data Validation ทีหลัง Ribbon > Data > Circle Invalidated Data
 
 <MDXImage name="validation-circle.png" />
+
+นอกจากวิธีด้านบนนี้แ้ลวเรายังสามารถใช้ Conditional Formatting ในการช่วย Validate ข้อมูลได้ด้วย โดยไปที่ Ribbon > Home > Conditional Formatting แล้วเลือก Pre-defined rule หรือเลือก Manage rules เพื่อจัดการและกำหนด Rule เอง
+
+<MDXImage name="validation-formatting.png" />
+
+อย่างในตัวอย่างผมเลือก Cell ใด Cell หนึ่งใน Column A จากนั้นใช้ Formula เดียวกันกับ Data validation 
+
+<MDXImage name="validation-formatting-1.png" />
+
+จากนั้นเราต้องการ Copy Formatting ไปยัง Cell อื่นๆ ด้วย ให้เลือก Cell ที่มี Format เช่น A9 จากนั้นไปที่ Ribbon > Home > Format painter แล้วลาก Cell ที่ต้องการ 
+
+<MDXImage name="validation-format-painter.png" caption="ลาก Cell ที่ต้องการ Apply" />
+
+และหากเราไปดูที่ Formatting rules จะเห็นว่ามันเปลี่ยนไป
+
+<MDXImage name="validation-formatting-2.png" caption="Applied to ที่เปลี่ยนไป"/>
+
+การใช้ COnditional formating นั้นนอกจากจะทำให้สามารถ Eyeballing ได้แล้วยังทำให้ใช้ Filter by formattinh ได้ด้วย
+
+<MDXImage name="validation-format-filter.png" caption="Filter โดยใช้ Format"/>
 ---
 
 # Formula

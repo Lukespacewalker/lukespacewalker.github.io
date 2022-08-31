@@ -20,10 +20,10 @@ export const MDXImage = ({
 }) => {
   imageList = imageList ?? React.useContext(MDXContext).imagesList;
   const image = imageList?.find(
-    (image) => image.name === name.substring(0, name.lastIndexOf("."))
+    (image) => image?.name === name.substring(0, name.lastIndexOf("."))
   );
   return (
-    image && (
+    (image !=null && image !==undefined)?(
       <div className="image-container">
         <div className={`${className} ${mode}`}>
           <GatsbyImage
@@ -34,6 +34,6 @@ export const MDXImage = ({
           {caption && <div className="text-center">{caption}</div>}
         </div>
       </div>
-    )
+    ) : <div className="p-6 font-bold">{name} is not exist</div>
   );
 };
