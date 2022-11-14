@@ -10,8 +10,8 @@ export const Intro: React.FunctionComponent = (props) => {
   return (
     <section className={intro}>
       <div className={introText}>
-        <h2 className="text-2xl sm:text-4xl">Hello there!</h2>
-        <h1 className="text-5xl sm:text-7xl text-gradient"> ผมชื่อ สุทธิศักดิ์</h1>
+        <h1 className="text-2xl sm:text-4xl">Hello there!</h1>
+        <h2 className="text-5xl sm:text-7xl text-gradient"> ผมชื่อ สุทธิศักดิ์</h2>
         <h4>ชื่นชอบการ</h4>
         <div>
           <a href="#photography-+-3d-rendering" onClick={scrollTo}>
