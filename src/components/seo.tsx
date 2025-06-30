@@ -1,5 +1,4 @@
 import * as React from "react";
-import * as PropTypes from 'prop-types';
 import { Helmet } from "react-helmet";
 import { StaticQuery, graphql } from "gatsby";
 

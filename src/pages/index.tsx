@@ -211,14 +211,14 @@ export const query = graphql`
   {
     blogs: allMdx(
       limit: 6
-      sort: { fields: frontmatter___date, order: DESC }
+      sort: {frontmatter: {date: DESC}}
       filter: { frontmatter: { type: { eq: "blog" } } }
     ) {
       ...ArticlesFragment
     }
     projects: allMdx(
       limit: 6
-      sort: { fields: frontmatter___date, order: DESC }
+      sort: {frontmatter: {date: DESC}}
       filter: { frontmatter: { type: { eq: "project" } } }
     ) {
       ...ArticlesFragment

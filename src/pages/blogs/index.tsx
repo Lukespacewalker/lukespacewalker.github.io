@@ -34,7 +34,7 @@ export default class Index extends React.Component<{ data: any }, {}> {
 export const pageQuery = graphql`
   {
     articles: allMdx(
-      sort: { fields: frontmatter___date, order: DESC }
+      sort: {frontmatter: {date: DESC}}
       filter: { frontmatter: { type: { eq: "blog" } } }
     ) {
       ...ArticlesFragment

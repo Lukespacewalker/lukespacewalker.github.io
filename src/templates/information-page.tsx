@@ -97,7 +97,6 @@ class InformationPage extends React.Component<
   }
 
   render() {
-    console.log(this.props)
     const {
       data: {
         mdx: {
@@ -113,6 +112,7 @@ class InformationPage extends React.Component<
           },
         },
       },
+      children
     } = this.props;
 
     const authors: Array<IAuthor> = a;
@@ -156,10 +156,11 @@ class InformationPage extends React.Component<
               h3: (props) => <H3 useToc={this.useTOC} {...props}></H3>,
               h4: (props) => <H4 useToc={this.useTOC} {...props}></H4>,
               pre: Pre,
+              GatsbyImage
             }}
           >
             <MDXContext.Provider value={{ imagesList: images }}>
-              {this.props.children}
+              {children}
             </MDXContext.Provider>
           </MDXProvider>
         </div>

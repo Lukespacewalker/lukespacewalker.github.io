@@ -1,9 +1,7 @@
 import * as React from "react";
 import * as PropTypes from "prop-types";
 import { code, prismCode } from "./code.module.scss";
-import Highlight, { defaultProps, Language } from 'prism-react-renderer';
-import Prism from "prism-react-renderer/prism";
-import theme from "prism-react-renderer/themes/vsDark";
+import { Highlight, Language, Prism, themes  } from 'prism-react-renderer';
 
 (typeof global !== "undefined" ? global : window as any).Prism = Prism;
 
@@ -58,7 +56,7 @@ class Code2 extends React.Component<{ children: any, language: Language }, {}>{
     const { children, language } = this.props;
     return (
       <div className={prismCode}>
-        <Highlight {...defaultProps} theme={theme} code={children} language={language}>
+        <Highlight theme={themes.vsDark} code={children} language={language}>
           {({ className, style, tokens, getLineProps, getTokenProps }) => (
             <pre className={className} style={{ ...style, padding: '20px' }}>
               {tokens.map((line, i) => (
